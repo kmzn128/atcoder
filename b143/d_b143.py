@@ -8,5 +8,5 @@ for i in range(N-1,1,-1):
         diff = L[i]-L[j]
         k = bisect.bisect_right(L, diff)
         wa += j-k if j-k > 0 else 0           
-            
+             
 print(wa)
