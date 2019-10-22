@@ -22,10 +22,11 @@ def make_graph(li):
             dic[town[1]].update({town[0]:town[2]})
     return dic        
 
-def find_path(g,s,t):
+def find_path(g,s,goal):
+    path = [s]
     score = 0
     searching_heap = []
-    checked = {start: score}
+    checked = {s: score}
     heapq.heappush(searching_heap, (score, path))
     while(len(searching_heap) > 0):
         score, path = heapq.heappop(searching_heap)
@@ -40,10 +41,23 @@ def find_path(g,s,t):
             else:
                 checked[next_pos] = new_score
                 heapq.heappush(searching_heap, (new_score, new_path))
-
+    return None
  
 g = make_graph(towns)
 for q in query:
     path = find_path(g, q[0], q[1])
+    if(not path):
+        print(-1)
+        exit()
+#     print(path)
+    ans = 0
+    tank = L
+    for i in range(len(path)-1):
+        if(tank - g[path[i]][path[i+1]] >= 0):
+            tank -= g[path[i]][path[i+1]]
+        elif(L - g[path[i]][path[i+1]] >= 0):
+            tank = L
+            ans += 1
+    print(ans)
     
     
