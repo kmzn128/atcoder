@@ -1,14 +1,11 @@
-def Main(N, K):
-    counter = 0
-    while(N):
-        N //= K
-        counter += 1
-    return counter
+def Main(N, A, B):
+    MOD = 10**9+7
+    
     
 
 def main():
-    N, K = list(map(int, input().split()))
-    print(Main(N, K))
+    N, A, B = list(map(int, input().split()))
+    print(Main(N, A, B))
 
 if __name__ == '__main__':
     main()
