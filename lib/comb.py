@@ -8,7 +8,9 @@ class Comb:
     def comb(self, n, k):
         assert n < Mint.MOD
         if k < 0 or k > n:
-            return 0
+            return Mint(0)
+        if k == 0 or k == n:
+            return Mint(1)
         numerator = Mint(n-k+1)
         for i in range(n-k+2, n+1):
             numerator *= Mint(i)
